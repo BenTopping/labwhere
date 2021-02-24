@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-##
-# Standard user
-# Access to create scans.
+# Scientist user
 class Scientist < User
   include Permissions
 end
