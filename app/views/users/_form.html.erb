@@ -1,4 +1,4 @@
-<%= form_for @user.becomes(User) do |f| %>
+<%= form_for @user do |f| %>
   <fieldset>
     <legend><%= header.to_s %></legend>
     <ul>
@@ -19,7 +19,7 @@
       </li>
       <li>
         <%= f.label :team_id, "Team*" %>
-        <%= f.select :team_id, options_from_collection_for_select(Team.all, :id, :name) %>
+        <%= f.select :team_id, options_from_collection_for_select(Team.all, :id, :name, @user.model.team_id) %>
       </li>
       <li>
         <%= f.label :type, 'Type*' %>

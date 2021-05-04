@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_084153) do
+ActiveRecord::Schema.define(version: 2021_03_03_135315) do
 
   create_table "audits", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "auditable_type"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_084153) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "uuid", limit: 36, null: false, comment: "Unique identifier for this Audit. Added to send to Events Warehouse."
+    t.text "message"
     t.index ["auditable_id", "auditable_type"], name: "index_audits_on_auditable_id_and_auditable_type"
     t.index ["auditable_type"], name: "index_audits_on_auditable_type"
     t.index ["user_id"], name: "index_audits_on_user_id"
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_084153) do
     t.string "ancestry"
     t.integer "children_count", default: 0, null: false
     t.string "uuid", limit: 36, null: false, comment: "Unique identifier for this Location. Added to send to Events Warehouse."
+    t.boolean "protected", default: false
     t.index ["ancestry"], name: "index_locations_on_ancestry"
     t.index ["barcode"], name: "index_locations_on_barcode", unique: true
     t.index ["location_type_id"], name: "index_locations_on_location_type_id"
